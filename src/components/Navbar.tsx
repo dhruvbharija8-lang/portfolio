@@ -65,7 +65,7 @@ export default function Navbar() {
                     className="text-2xl font-bold tracking-tighter hover:text-primary transition-colors"
                     onClick={(e) => scrollToSection(e, 'home')}
                 >
-                    YS
+                    DB
                 </Link>
 
                 <div className="flex items-center gap-6">

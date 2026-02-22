@@ -89,18 +89,7 @@ interface SongContextType {
 const SongContext = createContext<SongContextType | undefined>(undefined);
 
 export function SongProvider({ children }: { children: React.ReactNode }) {
-    const [currentIndex, setCurrentIndex] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem("currentSongIndex");
-            if (saved !== null) {
-                const index = parseInt(saved, 10);
-                if (!isNaN(index) && index >= 0 && index < songs.length) {
-                    return index;
-                }
-            }
-        }
-        return 0;
-    });
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
@@ -113,6 +102,15 @@ export function SongProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         setIsInitialized(true);
+
+        // Load currentIndex from localStorage after hydration (client-side only)
+        const saved = localStorage.getItem("currentSongIndex");
+        if (saved !== null) {
+            const index = parseInt(saved, 10);
+            if (!isNaN(index) && index >= 0 && index < songs.length) {
+                setCurrentIndex(index);
+            }
+        }
 
         // Cleanup function for the audio element when the component unmounts
         return () => {

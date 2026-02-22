@@ -12,7 +12,7 @@ import { useSong } from "@/context/SongContext";
 export default function HomeSection() {
     const about = getAboutData();
     const quote = getDailyQuote();
-    const { currentSong } = useSong();
+    const { currentSong, isInitialized } = useSong();
     const [time, setTime] = useState<string>("");
 
     useEffect(() => {
@@ -92,9 +92,9 @@ export default function HomeSection() {
                     transition={{ duration: 0.3, delay: 0.1 }}
                     className="relative w-48 h-48 md:w-80 md:h-80 rounded-full md:rounded-2xl overflow-hidden border-4 border-secondary shadow-2xl mx-auto md:ml-auto shrink-0"
                 >
-                    {(currentSong?.profile_image || about?.image_url) && (
+                    {((isInitialized && currentSong?.profile_image) || (!isInitialized && about?.image_url)) && (
                         <Image
-                            src={currentSong?.profile_image || about?.image_url}
+                            src={isInitialized && currentSong?.profile_image ? currentSong.profile_image : about?.image_url || ""}
                             alt="Profile"
                             fill
                             className="object-cover"
