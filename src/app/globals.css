@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+:root {
+  /* Default Theme (Udaarian - Warm Golden/Orange) */
+  --background: 35 60% 8%; /* Dark Brown */
+  --foreground: 35 60% 95%; /* Cream White */
+  --primary: 35 100% 60%; /* Golden Orange */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 35 40% 25%; /* Dark Brown */
+  --secondary-foreground: 35 60% 95%;
+  --muted: 35 30% 30%;
+  --muted-foreground: 35 40% 70%;
+  --accent: 25 100% 55%; /* Deep Orange */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 35 40% 20%;
+  --input: 35 40% 20%;
+  --ring: 35 100% 60%;
+  --radius: 0.5rem;
+}
+
+[data-theme="udaarian"] {
+  /* Satinder Sartaj - Udaarian (Warm Golden/Orange) */
+  --background: 35 60% 8%; /* Dark Brown */
+  --foreground: 35 60% 95%; /* Cream White */
+  --primary: 35 100% 60%; /* Golden Orange */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 35 40% 25%; /* Dark Brown */
+  --secondary-foreground: 35 60% 95%;
+  --muted: 35 30% 30%;
+  --muted-foreground: 35 40% 70%;
+  --accent: 25 100% 55%; /* Deep Orange */
+  --accent-foreground: 0 0% 100%;
+  --border: 35 40% 20%;
+  --input: 35 40% 20%;
+  --ring: 35 100% 60%;
+}
+
+[data-theme="tu-aake-dekhle"] {
+  /* King - Tu Aake Dekhle (Deep Purple + Gold) */
+  --background: 270 50% 15%; /* Deep Purple */
+  --foreground: 60 100% 90%; /* Pale Gold/White */
+  --primary: 45 95% 55%; /* Golden Yellow */
+  --primary-foreground: 270 50% 15%;
+  --secondary: 270 40% 30%; /* Purple */
+  --secondary-foreground: 60 100% 90%;
+  --muted: 270 30% 40%;
+  --muted-foreground: 60 50% 70%;
+  --accent: 280 80% 55%; /* Bright Purple */
+  --accent-foreground: 60 100% 90%;
+  --border: 270 40% 25%;
+  --input: 270 40% 25%;
+  --ring: 45 95% 55%;
+}
+
+[data-theme="wdtbu"] {
+  /* Karma - WDTBU (Dark Blue + Cyan) */
+  --background: 200 80% 12%; /* Deep Blue */
+  --foreground: 180 100% 85%; /* Light Cyan */
+  --primary: 180 100% 50%; /* Bright Cyan */
+  --primary-foreground: 200 80% 12%;
+  --secondary: 200 60% 25%; /* Dark Blue */
+  --secondary-foreground: 180 100% 85%;
+  --muted: 200 50% 35%;
+  --muted-foreground: 180 60% 70%;
+  --accent: 210 100% 60%; /* Electric Blue */
+  --accent-foreground: 0 0% 100%;
+  --border: 200 60% 20%;
+  --input: 200 60% 20%;
+  --ring: 180 100% 50%;
+}
+
+[data-theme="duniya-makkar"] {
+  /* Karma - Duniya Makkar (Deep Red + Black) */
+  --background: 0 0% 8%; /* Almost Black */
+  --foreground: 0 100% 90%; /* Bright White */
+  --primary: 355 85% 55%; /* Deep Red */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 50% 20%; /* Dark Red */
+  --secondary-foreground: 0 100% 90%;
+  --muted: 0 30% 25%;
+  --muted-foreground: 0 80% 75%;
+  --accent: 0 100% 50%; /* Bright Red */
+  --accent-foreground: 0 0% 100%;
+  --border: 0 50% 15%;
+  --input: 0 50% 15%;
+  --ring: 355 85% 55%;
+}
+
+
+
+
+
+/* Removed special gradient to match the clean album art aesthetic */
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  body.transition-theme {
+    @apply transition-colors duration-300;
+  }
+}
