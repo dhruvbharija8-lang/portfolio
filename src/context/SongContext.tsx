@@ -48,7 +48,7 @@ const songs: Song[] = [
     {
         id: "duniya-makkar",
         title: "co2",
-        artist: "Karma",
+        artist: "Prateek Khulad",
         src: "/songs/co2.mp3",
         theme: "duniya-makkar",
         image: "/album-art/co2.jpg",
@@ -60,7 +60,7 @@ const songs: Song[] = [
         title: "1-se-23",
         artist: "Karma",
         src: "/songs/1.mp3",
-        theme: "duniya-makkar",
+        theme: "1se23",
         image: "/album-art/2.jpg",
         about: "https://www.youtube.com/results?search_query=duniya+makkar+karma",
         profile_image: "/prof-photo/dhruv.jpeg",
@@ -142,7 +142,14 @@ export function SongProvider({ children }: { children: React.ReactNode }) {
         }
 
         // Update theme when song changes
-        document.documentElement.setAttribute("data-theme", songs[currentIndex].theme);
+        const htmlElement = document.documentElement;
+        htmlElement.classList.add("transition-theme");
+        htmlElement.setAttribute("data-theme", songs[currentIndex].theme);
+        
+        // Remove transition class after animation completes
+        setTimeout(() => {
+            htmlElement.classList.remove("transition-theme");
+        }, 600);
 
         // Update audio source if it changed
         if (audioRef.current && audioRef.current.src !== window.location.origin + songs[currentIndex].src) {
